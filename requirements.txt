@@ -1,0 +1,38 @@
+# Core GUI Framework
+PyQt6>=6.4.0
+
+# Hugging Face Integration
+transformers>=4.30.0
+huggingface-hub>=0.16.0
+tokenizers>=0.13.0
+
+# Model Processing
+torch>=2.0.0
+torchvision>=0.15.0
+torchaudio>=2.0.0
+
+# Web Interface
+gradio>=3.40.0
+
+# System Monitoring
+psutil>=5.9.0
+
+# HTTP Requests
+requests>=2.28.0
+
+# JSON Processing
+numpy>=1.24.0
+
+# File Operations
+pathlib2>=2.3.0
+
+# Progress Bars
+tqdm>=4.64.0
+
+# Optional: For better performance on Apple Silicon
+# torch-mps  # Uncomment if using Apple Silicon Mac
+
+# Development Dependencies (optional)
+# pytest>=7.0.0
+# black>=22.0.0
+# flake8>=5.0.0 
