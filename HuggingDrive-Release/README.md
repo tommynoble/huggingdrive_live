@@ -8,37 +8,73 @@ HuggingDrive is a powerful GUI application that helps you manage and optimize Hu
 
 This release contains:
 
-- **HuggingDrive.app** - macOS GUI application (156MB)
-- **HuggingDriveCLISimple** - Command-line interface (142MB)
-- **requirements-prod.txt** - Production dependencies
-- **README.md** - This documentation
+- **Source Code** - Complete Python source code
+- **Build Scripts** - PyInstaller specifications for creating executables
+- **Documentation** - Comprehensive installation and usage guides
+- **Requirements** - Production dependency specifications
 
 ## 🖥️ System Requirements
 
 - **macOS**: 10.13 or later (Apple Silicon or Intel)
+- **Python**: 3.9 or later
 - **RAM**: 4GB minimum, 8GB recommended
 - **Storage**: 2GB free space for the application
 - **External Drive**: USB, Thunderbolt, or network drive for model storage
 
 ## 📋 Installation
 
-### Option 1: GUI Application (Recommended)
+### Option 1: Build from Source (Recommended)
 
-1. **Download** the `HuggingDrive.app` file
-2. **Drag and drop** it to your Applications folder
-3. **Launch** from Applications or Spotlight
-4. **First run**: The app will request permissions for external drive access
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/tommynoble/huggingdrive_live.git
+   cd huggingdrive_live
+   ```
 
-### Option 2: Command Line Interface
+2. **Create virtual environment**:
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
 
-1. **Download** the `HuggingDriveCLISimple` file
-2. **Make executable**: `chmod +x HuggingDriveCLISimple`
-3. **Run**: `./HuggingDriveCLISimple --help`
+3. **Install dependencies**:
+   ```bash
+   pip install -r requirements-prod.txt
+   ```
+
+4. **Build executables**:
+   ```bash
+   pip install pyinstaller
+   pyinstaller HuggingDrive.spec  # GUI version
+   pyinstaller --onefile --name HuggingDriveCLI huggingdrive_cli_simple.py  # CLI version
+   ```
+
+5. **Run the application**:
+   ```bash
+   # GUI version
+   open dist/HuggingDrive.app
+   
+   # CLI version
+   ./dist/HuggingDriveCLI --help
+   ```
+
+### Option 2: Run from Source
+
+```bash
+# Install dependencies
+pip install -r requirements-prod.txt
+
+# Run GUI
+python huggingdrive.py
+
+# Run CLI
+python huggingdrive_cli_simple.py --help
+```
 
 ## 🎯 Quick Start
 
 ### GUI Version
-1. Launch `HuggingDrive.app`
+1. Launch the application
 2. Connect an external drive
 3. Browse and download models
 4. Test models with the built-in chat interface
@@ -46,13 +82,13 @@ This release contains:
 ### CLI Version
 ```bash
 # List available external drives
-./HuggingDriveCLISimple --list-drives
+./HuggingDriveCLI --list-drives
 
 # List models on a drive
-./HuggingDriveCLISimple --list-models --drive "/Volumes/YourDrive"
+./HuggingDriveCLI --list-models --drive "/Volumes/YourDrive"
 
 # Download a model (requires GUI for full functionality)
-./HuggingDriveCLISimple --download "microsoft/DialoGPT-medium" --drive "/Volumes/YourDrive"
+./HuggingDriveCLI --download "microsoft/DialoGPT-medium" --drive "/Volumes/YourDrive"
 ```
 
 ## 🔧 Features
@@ -73,11 +109,13 @@ This release contains:
 ## 📁 File Structure
 
 ```
-HuggingDrive-Release/
-├── HuggingDrive.app/          # macOS GUI application
-├── HuggingDriveCLISimple      # Command-line interface
+huggingdrive_live/
+├── huggingdrive/              # Main application modules
+├── dist/                      # Built executables (after building)
+├── HuggingDrive-Release/      # Release documentation
 ├── requirements-prod.txt      # Production dependencies
-└── README.md                  # This documentation
+├── HuggingDrive.spec         # PyInstaller spec for GUI
+└── huggingdrive_cli_simple.py # CLI source code
 ```
 
 ## 🔍 Troubleshooting
@@ -94,23 +132,23 @@ HuggingDrive-Release/
 - Verify sufficient disk space
 - Ensure drive is writable
 
-**"App won't launch"**
-- Check macOS security settings
-- Right-click and select "Open" for first launch
-- Verify macOS version compatibility
+**"Build failed"**
+- Check Python version (3.9+ required)
+- Verify all dependencies are installed
+- Check PyInstaller installation
 
 ### Support
 
 For issues and questions:
 - **GitHub**: https://github.com/tommynoble/huggingdrive_live
 - **Issues**: Create an issue on GitHub
-- **Documentation**: See the main repository README
+- **Documentation**: See INSTALL.md for detailed instructions
 
 ## 🔄 Updates
 
 To update HuggingDrive:
-1. Download the latest release
-2. Replace the existing application
+1. Pull the latest changes: `git pull origin main`
+2. Rebuild executables if needed
 3. Your models and settings will be preserved
 
 ## 📄 License
@@ -119,13 +157,18 @@ This software is provided as-is for educational and personal use.
 
 ## 🎉 What's New in v1.0.0
 
-- ✅ **Production-ready executables**
+- ✅ **Production-ready source code**
 - ✅ **Working CLI interface**
 - ✅ **External drive detection**
 - ✅ **Model management system**
 - ✅ **Cross-platform compatibility**
-- ✅ **Professional packaging**
+- ✅ **Professional documentation**
+- ✅ **Build scripts and specifications**
 
 ---
 
-**Made with ❤️ for the AI community** 
+**Made with ❤️ for the AI community**
+
+## 📥 Download Executables
+
+For pre-built executables, please check the [GitHub Releases](https://github.com/tommynoble/huggingdrive_live/releases) page or build from source using the instructions above. 
